@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roshini S · creative portfolio</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- ELEGANT COLOR PALETTE: deep purple, light gray, antique gold ----- */
+    :root {
+      --purple: #2D1B3C;
+      --light-gray: #F0F0F0;
+      --gold: #B28B5C;
+      --text-dark: #1A1A2E;
+      --bg: var(--light-gray);
+      --text: var(--text-dark);
+      --section-bg: rgba(255, 255, 255, 0.9);
+      --border-color: rgba(45, 27, 60, 0.15);
+      --shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+      --hover-shadow: 0 30px 50px -15px var(--gold);
+      --primary: var(--purple);
+      --primary-light: #3f2a52;
+      --accent: var(--gold);
+      --accent-soft: rgba(200, 159, 104, 0.2);
+    }
+    body.dark {
+      --bg: #0a0a0a;
+      --text: #f0f0f0;
+      --section-bg: #1a1a2a;
+      --border-color: rgba(255, 215, 0, 0.4);
+      --shadow: 0 20px 40px -15px rgba(0,0,0,0.8);
+      --hover-shadow: 0 30px 60px -10px #ffd966;
+      --primary: #ffd966;
+      --primary-light: #ffe08a;
+      --accent: #b388eb;
+      --gold: #ffd966;
+    }
+
+    body.dark .hero-text h1 {
+      color: #ffffff;
+      text-shadow: 0 0 8px #ffd966;
+    }
+    body.dark .role {
+      color: #ffd966;
+      border-right-color: #ffd966;
+      text-shadow: 0 0 8px #ffaa00;
+    }
+    body.dark .summary {
+      color: #dddddd;
+    }
+    body.dark .hero-text h1 i {
+      color: #ffd966;
+      text-shadow: 0 0 12px #ffaa00;
+    }
+    body.dark .btn-primary {
+      background: #ffd966;
+      color: #1a1a2a;
+      box-shadow: 0 0 20px #ffd966;
+    }
+    body.dark .btn-outline {
+      color: #ffd966;
+      border-color: #ffd966;
+    }
+    body.dark .btn-outline:hover {
+      background: #ffd966;
+      color: #1a1a2a;
+    }
+    body.dark section {
+      animation: borderGlowDark 4s infinite;
+    }
+    @keyframes borderGlowDark {
+      0% { border-color: #ffd966; box-shadow: 0 0 20px #ffd966; }
+      50% { border-color: #b388eb; box-shadow: 0 0 40px #b388eb; }
+      100% { border-color: #ffd966; box-shadow: 0 0 20px #ffd966; }
+    }
+    body.dark .particle {
+      opacity: 0.2;
+      background: #ffd966;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .particle {
+      position: absolute;
+      background: var(--accent);
+      opacity: 0.1;
+      border-radius: 50%;
+      filter: blur(30px);
+      animation: floatParticle 20s infinite alternate ease-in-out;
+    }
+    @keyframes floatParticle {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -30px) scale(1.2); }
+    }
+
+    section {
+      padding: 80px 8%;
+      position: relative;
+      background: var(--section-bg);
+      backdrop-filter: blur(2px);
+      border-radius: 60px 60px 30px 30px;
+      margin: 40px 6%;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+      border: 2px solid transparent;
+      animation: borderGlow 4s infinite;
+    }
+    @keyframes borderGlow {
+      0% { border-color: var(--purple); box-shadow: 0 0 15px var(--purple); }
+      50% { border-color: var(--gold); box-shadow: 0 0 30px var(--gold); }
+      100% { border-color: var(--purple); box-shadow: 0 0 15px var(--purple); }
+    }
+
+    section:hover {
+      box-shadow: var(--hover-shadow);
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      background: linear-gradient(145deg, var(--purple), var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+    }
+    .section-title i {
+      margin-right: 12px;
+      color: var(--gold);
+      font-size: 2rem;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      margin: 1rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .hero-text {
+      flex: 1 1 300px;
+    }
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--purple);
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .hero-text h1 i {
+      font-size: 3rem;
+      margin-right: 10px;
+      color: var(--gold);
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .role-container {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0.5rem 0 1rem;
+      min-height: 3rem;
+    }
+    .role {
+      color: var(--gold);
+      border-right: 3px solid var(--gold);
+      padding-right: 5px;
+      animation: blinkCursor 0.8s step-end infinite;
+      transition: color 0.3s, border-color 0.3s, text-shadow 0.3s;
+    }
+    @keyframes blinkCursor {
+      50% { border-color: transparent; }
+    }
+    .summary {
+      font-size: 1.2rem;
+      color: var(--text);
+      max-width: 550px;
+      margin: 1.5rem 0 2rem;
+      border-left: 5px solid var(--gold);
+      padding-left: 1.5rem;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--purple);
+      color: white;
+      box-shadow: 0 10px 20px -8px var(--purple);
+    }
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px -6px var(--gold);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--purple);
+      border: 2px solid var(--purple);
+    }
+    .btn-outline:hover {
+      background: var(--purple);
+      color: white;
+      transform: scale(1.05);
+    }
+    .hero-photo {
+      flex: 0 0 280px;
+      text-align: center;
+    }
+    .hero-photo img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 20px 40px -10px var(--gold);
+      transition: transform 0.3s;
+      background: white;
+    }
+    .hero-photo img:hover {
+      transform: scale(1.02);
+    }
+
+    /* ===== EDUCATION TIMELINE ===== */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 10px;
+      bottom: 10px;
+      width: 4px;
+      background: linear-gradient(var(--purple), var(--gold));
+      border-radius: 4px;
+      box-shadow: 0 0 15px var(--gold);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 24px;
+      height: 24px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px white, 0 0 0 6px var(--gold);
+      animation: pulseDot 2s infinite;
+      z-index: 2;
+    }
+    @keyframes pulseDot {
+      0% { box-shadow: 0 0 0 0 white, 0 0 0 4px var(--gold); }
+      70% { box-shadow: 0 0 0 8px white, 0 0 0 12px var(--gold); }
+      100% { box-shadow: 0 0 0 0 white, 0 0 0 4px var(--gold); }
+    }
+    .timeline-content {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 28px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      border-left: 6px solid var(--gold);
+      transition: transform 0.2s;
+      color: var(--text-dark);
+    }
+    .timeline-content:hover {
+      transform: translateX(8px);
+      box-shadow: 0 20px 30px -8px var(--gold);
+    }
+    .timeline-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-content .year {
+      color: var(--purple);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== ORBIT SKILLS - 4 concentric circles ===== */
+    .orbit-container {
+      position: relative;
+      width: 560px;
+      height: 560px;
+      margin: 2rem auto;
+    }
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 4px dotted var(--gold);
+      box-shadow: 0 0 20px rgba(178, 139, 92, 0.5);
+      animation: rotateOrbit linear infinite;
+    }
+    .orbit-1 { width: 140px; height: 140px; animation-duration: 14s; }
+    .orbit-2 { width: 260px; height: 260px; animation-duration: 18s; }
+    .orbit-3 { width: 380px; height: 380px; animation-duration: 22s; }
+    .orbit-4 { width: 500px; height: 500px; animation-duration: 26s; }
+
+    .orbit-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: transform 0.2s;
+    }
+    .orbit-item i {
+      font-size: 2rem;
+      color: var(--purple);
+      filter: drop-shadow(0 0 8px var(--gold));
+    }
+
+    .orbit-1 .orbit-item:nth-child(1) { transform: rotate(0deg) translate(70px) rotate(-0deg); }
+    .orbit-1 .orbit-item:nth-child(2) { transform: rotate(180deg) translate(70px) rotate(-180deg); }
+
+    .orbit-2 .orbit-item:nth-child(1) { transform: rotate(45deg) translate(130px) rotate(-45deg); }
+    .orbit-2 .orbit-item:nth-child(2) { transform: rotate(225deg) translate(130px) rotate(-225deg); }
+
+    .orbit-3 .orbit-item:nth-child(1) { transform: rotate(90deg) translate(190px) rotate(-90deg); }
+    .orbit-3 .orbit-item:nth-child(2) { transform: rotate(270deg) translate(190px) rotate(-270deg); }
+
+    .orbit-4 .orbit-item:nth-child(1) { transform: rotate(135deg) translate(250px) rotate(-135deg); }
+    .orbit-4 .orbit-item:nth-child(2) { transform: rotate(315deg) translate(250px) rotate(-315deg); }
+
+    @keyframes rotateOrbit {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* ===== SOFT SKILLS BUTTONS ===== */
+    .soft-skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 3rem 0 1rem;
+    }
+    .soft-btn {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--purple);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .soft-btn:hover {
+      background: var(--gold);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px var(--gold);
+    }
+    .soft-btn:active {
+      transform: scale(0.95);
+    }
+    body.dark .soft-btn {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    body.dark .soft-btn:hover {
+      background: var(--gold);
+      color: #1a1a2a;
+    }
+
+    /* ===== PROJECTS & COCURRICULAR ZIGZAG ===== */
+    .zigzag-item {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin: 4rem 0;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .zigzag-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .zigzag-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .zigzag-icon {
+      flex: 0 0 100px;
+      font-size: 4rem;
+      color: var(--gold);
+      text-align: center;
+      filter: drop-shadow(0 0 15px var(--gold));
+    }
+    .zigzag-text {
+      flex: 1;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 40px;
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+      border-left: 6px solid var(--gold);
+      transition: all 0.2s;
+      color: var(--text-dark);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .zigzag-text:hover {
+      transform: scale(1.01) translateY(-5px) rotateX(2deg) rotateY(2deg);
+      box-shadow: 0 25px 40px -12px var(--gold);
+    }
+    .zigzag-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--purple);
+    }
+    .zigzag-text p {
+      color: var(--text-dark);
+    }
+    .tech-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      margin: 0.5rem 0.2rem;
+      border: 1px solid var(--gold);
+      color: var(--purple);
+    }
+
+    /* ===== INTERNSHIP CARD ===== */
+    .internship-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 40px;
+      border-left: 6px solid var(--gold);
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+      transition: 0.2s;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-dark);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .internship-card:hover {
+      transform: scale(1.02) rotateX(1deg) rotateY(1deg);
+      box-shadow: 0 30px 40px -12px var(--gold);
+    }
+    .internship-card h3 {
+      color: var(--purple);
+    }
+
+    /* ===== CO-CURRICULAR ===== */
+    .cocurricular-list {
+      list-style: none;
+    }
+    .cocurricular-list .zigzag-item {
+      margin: 2rem 0;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      background: white;
+      border-radius: 50px;
+      padding: 3rem;
+      box-shadow: 0 25px 40px -15px rgba(0,0,0,0.1);
+      color: var(--text-dark);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .contact-grid:hover {
+      transform: scale(1.01) rotateX(1deg) rotateY(1deg);
+      box-shadow: 0 30px 50px -15px var(--gold);
+    }
+    .contact-info p {
+      margin: 1.2rem 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .contact-info i {
+      width: 30px;
+      color: var(--gold);
+      font-size: 1.5rem;
+    }
+    .contact-info a {
+      color: var(--purple);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-info a:hover {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--light-gray);
+      border-radius: 40px;
+      font-size: 1rem;
+      transition: 0.2s;
+      background: #fefefe;
+      color: var(--purple);
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px var(--gold);
+    }
+    .contact-form button {
+      background: var(--purple);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .contact-form button:hover {
+      background: var(--primary-light);
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px -8px var(--gold);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer-slogan {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 2rem;
+      background: var(--section-bg);
+      border-radius: 60px;
+      border: 2px dashed var(--gold);
+    }
+    .footer-slogan i {
+      color: var(--gold);
+    }
+
+    /* ===== CHATBOT STYLES ===== */
+    .chat-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(45,27,60,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 1001;
+      border: 2px solid var(--gold);
+    }
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 35px var(--gold);
+    }
+    .chat-button i {
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      height: 500px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+      border: 2px solid var(--gold);
+    }
+    .chat-window.open {
+      display: flex;
+    }
+
+    .chat-header {
+      background: var(--purple);
+      color: white;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-header h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .chat-close {
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      background: var(--light-gray);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+    .message.bot {
+      background: white;
+      border: 1px solid var(--gold);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      color: var(--purple);
+    }
+    .message.user {
+      background: var(--purple);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-input-area {
+      display: flex;
+      padding: 1rem;
+      background: white;
+      border-top: 1px solid var(--gold);
+    }
+    .chat-input-area input {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--light-gray);
+      border-radius: 30px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.2s;
+    }
+    .chat-input-area input:focus {
+      border-color: var(--gold);
+    }
+    .chat-input-area button {
+      background: var(--purple);
+      color: white;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-input-area button:hover {
+      background: var(--primary-light);
+    }
+    .chat-input-area button i {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .suggested-questions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem 1rem 1rem;
+      background: var(--light-gray);
+      border-top: 1px dashed var(--gold);
+    }
+    .suggested-btn {
+      background: white;
+      border: 1px solid var(--gold);
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--purple);
+    }
+    .suggested-btn:hover {
+      background: var(--gold);
+      color: white;
+    }
+
+    /* ===== DARK MODE TOGGLE (existing) ===== */
+    .theme-toggle {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: var(--purple);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 5px 15px var(--gold);
+      border: 2px solid white;
+      transition: transform 0.2s;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 800px) {
+      .hero { justify-content: center; text-align: center; }
+      .hero-text .summary { border-left: none; padding-left: 0; }
+      .orbit-container { width: 420px; height: 420px; transform: scale(0.75); }
+      .orbit-1 { width: 105px; height: 105px; }
+      .orbit-2 { width: 195px; height: 195px; }
+      .orbit-3 { width: 285px; height: 285px; }
+      .orbit-4 { width: 375px; height: 375px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .zigzag-item { flex-direction: column !important; text-align: center; }
+      .soft-skills { gap: 0.8rem; }
+      .soft-btn { padding: 0.6rem 1.5rem; font-size: 1rem; }
+      .chat-window { width: 300px; right: 15px; bottom: 80px; }
+      .chat-button { right: 15px; bottom: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
+
+  <!-- CHATBOT -->
+  <div class="chat-button" id="chatButton">
+    <i class="fas fa-comment"></i>
+  </div>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <h3>Ask Roshini</h3>
+      <span class="chat-close" id="chatClose">&times;</span>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">Hi! I'm here to answer anything about Roshini. Try asking about skills, education, projects, internships, co‑curricular, or contact.</div>
+    </div>
+    <div class="suggested-questions" id="suggestedQuestions">
+      <button class="suggested-btn">What are your technical skills?</button>
+      <button class="suggested-btn">Tell me about education</button>
+      <button class="suggested-btn">Projects you've done?</button>
+      <button class="suggested-btn">Internships?</button>
+      <button class="suggested-btn">Co‑curricular?</button>
+      <button class="suggested-btn">How to contact you?</button>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Type your question..." />
+      <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-text">
+        <h1><i class="fas fa-hand-peace"></i> Hello I am Roshini</h1>
+        <div class="role-container">
+          <span class="role" id="role"></span>
+        </div>
+        <div class="summary">
+          <i class="fas fa-lightbulb" style="color:var(--gold); margin-right: 10px;"></i>
+          I’m a Computer Science Engineering student passionate about building systems that turn complexity into clarity. I blend structured thinking with creative exploration to solve real‑world problems.
+        </div>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-comment-dots"></i> Let's talk</a>
+        
+        </div>
+      </div>
+      <div class="hero-photo">
+        <!-- Replace with your own photo (PNG, JPG, etc.) -->
+        <img src="portfolio image.jpeg" alt="Roshini">
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION TIMELINE -->
+  <section id="education">
+    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+    <div class="timeline">
+      <div class="timeline-item" id="edu1">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <h3>Government College of Engineering, Salem</h3>
+          <div class="year">2022 – 2026 · B.E Computer Science</div>
+          <p>CGPA: 8.9/10 · Coursework: DSA, OS, DBMS, AI</p>
+        </div>
+      </div>
+      <div class="timeline-item" id="edu2">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <h3>Holy Angels' Girls Matriculation School, Salem</h3>
+          <div class="year">State Board · 2020 (10th) & 2022 (12th)</div>
+          <p>10th: 98% | 12th: 96.6%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I AM GOOD AT (ORBIT SKILLS + SOFT SKILLS BUTTONS) -->
+  <section id="skills">
+    <h2 class="section-title"><i class="fas fa-cogs"></i> What I am good at</h2>
+    <div class="skills-wrapper">
+      <div class="orbit-container">
+        <!-- Orbit 1: C++, Java -->
+        <div class="orbit orbit-1">
+          <div class="orbit-item"><i class="fab fa-cuttlefish"></i><span>C++</span></div>
+          <div class="orbit-item"><i class="fab fa-java"></i><span>Java</span></div>
+        </div>
+        <!-- Orbit 2: Python, HTML -->
+        <div class="orbit orbit-2">
+          <div class="orbit-item"><i class="fab fa-python"></i><span>Python</span></div>
+          <div class="orbit-item"><i class="fab fa-html5"></i><span>HTML</span></div>
+        </div>
+        <!-- Orbit 3: CSS, MySQL -->
+        <div class="orbit orbit-3">
+          <div class="orbit-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+          <div class="orbit-item"><i class="fas fa-database"></i><span>MySQL</span></div>
+        </div>
+        <!-- Orbit 4: JavaScript, Git -->
+        <div class="orbit orbit-4">
+          <div class="orbit-item"><i class=""></i><span></span></div>
+          <div class="orbit-item"><i class=""></i><span></span></div>
+        </div>
+      </div>
+
+      <!-- SOFT SKILLS BUTTONS -->
+      <div class="soft-skills">
+        <button class="soft-btn">Communication</button>
+        <button class="soft-btn">Teamwork</button>
+        <button class="soft-btn">Problem Solving</button>
+        <button class="soft-btn">Logical Skills</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title"><i class="fas fa-rocket"></i> What I have done so far</h2>
+    
+    <div class="zigzag-item" id="proj1">
+      <div class="zigzag-icon"><i class="fas fa-balance-scale"></i></div>
+      <div class="zigzag-text tilt-card">
+        <h3>🔹 AI Complaint Management System</h3>
+        <p><strong>Problem:</strong> Hundreds of student grievances lost in paperwork – students felt unheard.</p>
+        <p><strong>Solution:</strong> NLP‑driven classifier (VADER) routes complaints to the right authority. 40% faster response.</p>
+        <span class="tech-tag">Node.js</span><span class="tech-tag">Flask</span><span class="tech-tag">MongoDB</span>
+      </div>
+    </div>
+
+    <div class="zigzag-item" id="proj2">
+      <div class="zigzag-icon"><i class="fas fa-gift"></i></div>
+      <div class="zigzag-text tilt-card">
+        <h3>🔹 E‑Commerce Gift Shop</h3>
+        <p><strong>Problem:</strong> Buying a gift felt impersonal – just a grid of products.</p>
+        <p><strong>Solution:</strong> Storytelling interface with clean grids and soft shadows. Product‑first narrative.</p>
+        <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERNSHIP -->
+  <section id="internship">
+    <h2 class="section-title"><i class="fas fa-briefcase"></i> Internship</h2>
+    <div class="internship-card tilt-card">
+      <h3><i class="fas fa-laptop-code"></i> Web Development Intern · Ideal Formatic Group, Salem</h3>
+      <p>Refactored legacy dashboards into a reusable component library, cutting future development time by 15%. Collaborated with cross‑functional teams to ship features under tight deadlines.</p>
+    </div>
+  </section>
+
+  <!-- CO-CURRICULAR (with Hackathon entry) -->
+  <section id="cocurricular">
+    <h2 class="section-title"><i class="fas fa-trophy"></i> Co‑curricular activities</h2>
+    <div class="cocurricular-list">
+      <div class="zigzag-item" id="cocurr1">
+        <div class="zigzag-icon"><i class="fas fa-gavel"></i></div>
+        <div class="zigzag-text tilt-card">
+          <h4>Paper presentation</h4>
+          <p>Presented a paper on Digital Forensics at Government College Of Engineering, Dharmapuri.</p>
+        </div>
+      </div>
+      <div class="zigzag-item" id="cocurr2">
+        <div class="zigzag-icon"><i class="fas fa-microchip"></i></div>
+        <div class="zigzag-text tilt-card">
+          <h4>Technical symposium</h4>
+          <p>Participated in technical symposium at Sona College of Technology, Salem.</p>
+        </div>
+      </div>
+      <!-- New Hackathon entry -->
+      <div class="zigzag-item" id="cocurr3">
+        <div class="zigzag-icon"><i class="fas fa-laptop-code"></i></div>
+        <div class="zigzag-text tilt-card">
+          <h4>Hackathon</h4>
+          <p>Participated in Smart India Hackathon 2025.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <h2 class="section-title"><i class="fas fa-address-card"></i> Let's connect</h2>
+    <div class="contact-grid tilt-card">
+      <div class="contact-info">
+        <p><i class="fas fa-user"></i> Roshini S</p>
+        <p>
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:roshnigceslm776@gmail.com">roshnigceslm776@gmail.com</a>
+        </p>
+        <p>
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/roshini-s-a585a0293" target="_blank" rel="noopener noreferrer">linkedin.com/in/roshini-s</a>
+        </p>
+        <p>
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/Roshini1403" target="_blank" rel="noopener noreferrer">github.com/Roshini1403</a>
+        </p>
+      </div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your name" />
+        <input type="email" placeholder="Email address" />
+        <textarea rows="4" placeholder="Your message"></textarea>
+        <button><i class="fas fa-paper-plane"></i> Send message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SLOGAN -->
+  <footer style="margin: 2rem 8% 4rem;">
+    <div class="footer-slogan">
+      <i class="fas fa-feather-alt"></i> ✦ Every story needs a next chapter. Let’s write it together. ✦ <i class="fas fa-feather-alt"></i>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Particles
+      const particlesContainer = document.getElementById('particles');
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = Math.random() * 200 + 100;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particlesContainer.appendChild(particle);
+      }
+
+      // Dark mode toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const icon = themeToggle.querySelector('i');
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        if (document.body.classList.contains('dark')) {
+          icon.className = 'fas fa-sun';
+        } else {
+          icon.className = 'fas fa-moon';
+        }
+      });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('.timeline-item, .zigzag-item').forEach(el => observer.observe(el));
+
+      // Typewriter effect
+      const roles = [
+        "I build systems.",
+        "I solve problems.",
+        "I craft code.",
+        "I think in algorithms.",
+        "I design experiences."
+      ];
+      let roleIndex = 0, charIndex = 0;
+      const roleElement = document.getElementById('role');
+      function typeRole() {
+        if (charIndex < roles[roleIndex].length) {
+          roleElement.textContent += roles[roleIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(typeRole, 100);
+        } else {
+          setTimeout(eraseRole, 2000);
+        }
+      }
+      function eraseRole() {
+        if (charIndex > 0) {
+          roleElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(eraseRole, 50);
+        } else {
+          roleIndex = (roleIndex + 1) % roles.length;
+          setTimeout(typeRole, 200);
+        }
+      }
+      typeRole();
+
+      // 3D tilt effect on cards
+      const tiltCards = document.querySelectorAll('.tilt-card');
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+
+      // ================== CHATBOT ==================
+      const chatButton = document.getElementById('chatButton');
+      const chatWindow = document.getElementById('chatWindow');
+      const chatClose = document.getElementById('chatClose');
+      const chatMessages = document.getElementById('chatMessages');
+      const chatInput = document.getElementById('chatInput');
+      const chatSend = document.getElementById('chatSend');
+      const suggestedBtns = document.querySelectorAll('.suggested-btn');
+
+      // Predefined responses based on keywords
+      function getBotResponse(userMsg) {
+        const msg = userMsg.toLowerCase();
+        if (msg.includes('skill') || msg.includes('c++') || msg.includes('java') || msg.includes('python') || msg.includes('html') || msg.includes('css') || msg.includes('javascript') || msg.includes('mysql') || msg.includes('git')) {
+          return "My technical skills include C++, Java, Python, HTML, CSS, JavaScript, MySQL, and Git. I also have strong soft skills: Communication, Teamwork, Problem Solving, and Logical Skills.";
+        } else if (msg.includes('education') || msg.includes('college') || msg.includes('school') || msg.includes('study') || msg.includes('graduate')) {
+          return "I'm pursuing B.E in Computer Science at Government College of Engineering, Salem (2022–2026). I completed my schooling at Holy Angels' Girls Matriculation School with 98% in 10th and 96.6% in 12th.";
+        } else if (msg.includes('project') || msg.includes('complaint') || msg.includes('ai') || msg.includes('e-commerce') || msg.includes('gift')) {
+          return "I've built an AI Complaint Management System (NLP, Flask, Node.js, MongoDB) and an E‑Commerce Gift Shop (HTML, CSS). Both focus on solving real problems with clean design.";
+        } else if (msg.includes('intern') || msg.includes('ideal') || msg.includes('experience') || msg.includes('work')) {
+          return "I did a Web Development Internship at Ideal Formatic Group, Salem, where I refactored legacy dashboards into reusable components, cutting future development time by 15%.";
+        } else if (msg.includes('cocurricular') || msg.includes('co-curricular') || msg.includes('paper') || msg.includes('symposium') || msg.includes('hackathon')) {
+          return "I presented a paper on Digital Forensics at GCE, Dharmapuri; participated in a technical symposium at Sona College; and took part in Smart India Hackathon 2025.";
+        } else if (msg.includes('contact') || msg.includes('email') || msg.includes('phone') || msg.includes('linkedin') || msg.includes('github')) {
+          return "You can reach me at roshnigceslm776@gmail.com, connect on LinkedIn (linkedin.com/in/roshini-s), or check my GitHub: github.com/Roshini1403.";
+        } else {
+          return "I'm not sure about that. Try asking about skills, education, projects, internships, co‑curricular, or contact details.";
+        }
+      }
+
+      function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message', sender);
+        msgDiv.textContent = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function handleUserMessage(message) {
+        if (!message.trim()) return;
+        addMessage(message, 'user');
+        const response = getBotResponse(message);
+        setTimeout(() => {
+          addMessage(response, 'bot');
+        }, 300);
+      }
+
+      chatSend.addEventListener('click', () => {
+        handleUserMessage(chatInput.value);
+        chatInput.value = '';
+      });
+
+      chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          handleUserMessage(chatInput.value);
+          chatInput.value = '';
+        }
+      });
+
+      suggestedBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const question = btn.textContent;
+          handleUserMessage(question);
+        });
+      });
+
+      chatButton.addEventListener('click', () => {
+        chatWindow.classList.add('open');
+      });
+
+      chatClose.addEventListener('click', () => {
+        chatWindow.classList.remove('open');
+      });
+    })();
+  </script>
+</body>
+</html>
